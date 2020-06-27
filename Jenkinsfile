@@ -12,4 +12,7 @@ node {
         stage('Deploy'){
                 sh "cp -avr /var/lib/jenkins/workspace/jenkinpipedemo/dist/demoapp/. /codies/angular"
         }
+        stage('Post-Deploy'){
+                cleanWs()        
+        }
 }
