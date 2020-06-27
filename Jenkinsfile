@@ -4,16 +4,15 @@ node {
         }
 
         stage('Install node modules'){
-                sh "npm install"
+                // sh "npm install"
         }
         stage('Build'){
-                sh "npm run build"        
+                // sh "npm run build"        
         }        
         stage('Deploy'){
-                sh "cp -avr /var/lib/jenkins/workspace/jenkinpipedemo/dist/demoapp/. /codies/angular"
+                // sh "cp -avr /var/lib/jenkins/workspace/jenkinpipedemo/dist/demoapp/. /codies/angular"
         }
-        stage('Post-Deploy'){
-                cleanup {
+        stage('Post-Deploy'){                
                         /* clean up workspace */
                         deleteDir()
                         /* clean up tmp directory */
@@ -24,6 +23,6 @@ node {
                         dir("${workspace}@script") {
                                 deleteDir()
                         }
-                }        
+                        
         }
 }
