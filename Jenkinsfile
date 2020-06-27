@@ -8,5 +8,13 @@ node {
         }
         stage('Build'){
                 sh "npm run build-prod"
-        }        
+        }
+        stage('Deploy'){
+                // sh "npm run build-prod"
+        }
+        post { 
+          always { 
+            cleanWs()
+        }
+    }
 }
