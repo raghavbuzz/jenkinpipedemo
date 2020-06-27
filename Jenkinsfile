@@ -13,6 +13,17 @@ node {
                 sh "cp -avr /var/lib/jenkins/workspace/jenkinpipedemo/dist/demoapp/. /codies/angular"
         }
         stage('Post-Deploy'){
-                cleanWs()        
+                cleanup {
+                        /* clean up workspace */
+                        deleteDir()
+                        /* clean up tmp directory */
+                        dir("${workspace}@tmp") {
+                                deleteDir()
+                        }
+                        /* clean up script directory */
+                        dir("${workspace}@script") {
+                                deleteDir()
+                        }
+                }        
         }
 }
