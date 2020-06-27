@@ -7,6 +7,9 @@ node {
                 sh "npm install"
         }
         stage('Build'){
-                sh "npm run build"
+                sh "npm run build"        
         }        
+        stage('Deploy'){
+                sh "cp -avr /var/lib/jenkins/workspace/jenkinpipedemo/dist/demoapp/. /codies/angular"
+        }
 }
