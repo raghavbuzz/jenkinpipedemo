@@ -10,10 +10,9 @@ node {
                 sh "npm run build-prod"
         }
         stage('Deploy'){
-                // sh "npm run build-prod"
+                sh "cp -avr /var/lib/jenkins/workspace/jenkinpipedemo/dist/demoapp/. /codies/angular"
         }
-        post { 
-          always { 
+        stage('Post Deploy'){
             cleanWs()
         }
     }
